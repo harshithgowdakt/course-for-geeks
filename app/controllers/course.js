@@ -137,19 +137,19 @@ var CourseHandler = /** @class */ (function () {
     };
     CourseHandler.updateCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var error, course, isUpdate, error_5;
+            var course, error, isUpdate, error_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        error = validateCourse(req.body).error;
-                        if (error)
-                            return [2 /*return*/, res.status(400).send(error.details[0].message)];
                         return [4 /*yield*/, courseModel.findByPk(req.params.id)];
                     case 1:
                         course = _a.sent();
                         if (!course)
                             return [2 /*return*/, res.status(400).send('Course with given ID does not exists')];
+                        error = validateCourse(req.body).error;
+                        if (error)
+                            return [2 /*return*/, res.status(400).send(error.details[0].message)];
                         return [4 /*yield*/, courseModel.update({ name: req.body.name }, { where: { id: req.params.id } })];
                     case 2:
                         isUpdate = _a.sent();

@@ -54,32 +54,6 @@ class UesrHandler {
             next(error);
         }
     }
-    public static async  deleteUser(req, res, next) {
-        try {
-            let user = await userModel.destory(req.params.id)
-            if (!user) return res.status(400).send('User with given ID does not exists');
-            
-            res.send(generateSuccessResponse({
-                id: user.id,
-                name: user.name,
-                email: user.email
-            }, 'deleted.successfully'));
-        } catch (error) {
-            next(error);
-        }
-    }
-    public static async updateUser(req, res, next) {
-        try {
-            let user = await userModel.update(req.params.name, req.body.email)
-            res.send(generateSuccessResponse({
-                id: user.id,
-                name: user.name,
-                email: user.email
-            }, 'updated.successfully'));
-        } catch (error) {
-            next(error);
-        }
-    }
 }
 
 export default UesrHandler;

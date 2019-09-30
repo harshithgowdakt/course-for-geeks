@@ -135,58 +135,6 @@ var UesrHandler = /** @class */ (function () {
             });
         });
     };
-    UesrHandler.deleteUser = function (req, res, next) {
-        return __awaiter(this, void 0, void 0, function () {
-            var user, error_4;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, userModel.destory(req.params.id)];
-                    case 1:
-                        user = _a.sent();
-                        if (!user)
-                            return [2 /*return*/, res.status(400).send('User with given ID does not exists')];
-                        res.send(generateSuccessResponse({
-                            id: user.id,
-                            name: user.name,
-                            email: user.email
-                        }, 'deleted.successfully'));
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_4 = _a.sent();
-                        next(error_4);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    UesrHandler.updateUser = function (req, res, next) {
-        return __awaiter(this, void 0, void 0, function () {
-            var user, error_5;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, userModel.update(req.params.name, req.body.email)];
-                    case 1:
-                        user = _a.sent();
-                        res.send(generateSuccessResponse({
-                            id: user.id,
-                            name: user.name,
-                            email: user.email
-                        }, 'updated.successfully'));
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_5 = _a.sent();
-                        next(error_5);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
     return UesrHandler;
 }());
 exports["default"] = UesrHandler;
