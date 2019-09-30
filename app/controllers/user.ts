@@ -20,13 +20,19 @@ class UesrHandler {
 
     public static async  getUserById(req, res, next) {
         try {
-            let result = await userModel.findByPk(req.params.id);
-            res.send(generateSuccessResponse(result, 'course.details'));
+            let user = await userModel.findByPk(req.params.id);
+            if (!user) return res.status(400).send('User with given ID does not exists');
+
+            res.send(generateSuccessResponse({
+                id: user.id,
+                name: user.name,
+                email: user.email
+            }, 'user.details'));
         } catch (error) {
             next(error);
         }
     }
-    
+
     public static async createUser(req, res, next) {
         try {
             const { error } = validateUser(req.body);
@@ -43,7 +49,7 @@ class UesrHandler {
                 id: user.id,
                 name: user.name,
                 email: user.email
-            }, 'course.registration.success'));
+            }, 'registration.success'));
         } catch (error) {
             next(error);
         }
@@ -55,7 +61,7 @@ class UesrHandler {
                 id: user.id,
                 name: user.name,
                 email: user.email
-            }, 'deleted successfully'));
+            }, 'deleted.successfully'));
         } catch (error) {
             next(error);
         }
@@ -67,7 +73,7 @@ class UesrHandler {
                 id: user.id,
                 name: user.name,
                 email: user.email
-            }, 'updated successfully'));
+            }, 'updated.successfully'));
         } catch (error) {
             next(error);
         }

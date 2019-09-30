@@ -62,8 +62,8 @@ exports["default"] = App;
 var port = process.env.PORT || 3000;
 var app = new App([
     new user_1["default"](),
-    new index_1["default"],
-    new auth_route_1["default"],
-    new courses_1["default"]
+    new index_1["default"](),
+    new auth_route_1["default"](),
+    new courses_1["default"]()
 ], port);
 app.listen();

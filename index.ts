@@ -3,10 +3,10 @@ import cookieParser from "cookie-parser"
 import logger from "morgan"
 import express from "express";
 import passport from "passport";
-import AuthController from './app/routes/auth-route'
-import UserController from './app/routes/user'
+import AuthRouter from './app/routes/auth-route'
+import UserRouter from './app/routes/user'
 import CourseRouter from './app/routes/courses'
-import IndexController from './app/routes/index'
+import IndexRouter from './app/routes/index'
 import globalErrorHandler from './app/error-handler/global-error-handler'
 import * as path from "path";
 
@@ -55,10 +55,10 @@ export default class App {
 
 const port = process.env.PORT || 3000;
 const app = new App([
-    new UserController(),
-    new IndexController,
-    new AuthController,
-    new CourseRouter],
+    new UserRouter(),
+    new IndexRouter(),
+    new AuthRouter(),
+    new CourseRouter()],
     port
 );
 app.listen();

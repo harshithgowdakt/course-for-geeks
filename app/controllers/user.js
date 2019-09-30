@@ -73,15 +73,21 @@ var UesrHandler = /** @class */ (function () {
     };
     UesrHandler.getUserById = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_2;
+            var user, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, userModel.findByPk(req.params.id)];
                     case 1:
-                        result = _a.sent();
-                        res.send(generateSuccessResponse(result, 'course.details'));
+                        user = _a.sent();
+                        if (!user)
+                            return [2 /*return*/, res.status(400).send('User with given ID does not exists')];
+                        res.send(generateSuccessResponse({
+                            id: user.id,
+                            name: user.name,
+                            email: user.email
+                        }, 'user.details'));
                         return [3 /*break*/, 3];
                     case 2:
                         error_2 = _a.sent();
@@ -118,7 +124,7 @@ var UesrHandler = /** @class */ (function () {
                             id: user.id,
                             name: user.name,
                             email: user.email
-                        }, 'course.registration.success'));
+                        }, 'registration.success'));
                         return [3 /*break*/, 5];
                     case 4:
                         error_3 = _a.sent();
@@ -143,7 +149,7 @@ var UesrHandler = /** @class */ (function () {
                             id: user.id,
                             name: user.name,
                             email: user.email
-                        }, 'deleted successfully'));
+                        }, 'deleted.successfully'));
                         return [3 /*break*/, 3];
                     case 2:
                         error_4 = _a.sent();
@@ -168,7 +174,7 @@ var UesrHandler = /** @class */ (function () {
                             id: user.id,
                             name: user.name,
                             email: user.email
-                        }, 'updated successfully'));
+                        }, 'updated.successfully'));
                         return [3 /*break*/, 3];
                     case 2:
                         error_5 = _a.sent();
