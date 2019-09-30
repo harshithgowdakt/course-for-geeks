@@ -1,5 +1,5 @@
 {
-  "name": "express-example",
+  "name": "course-for-geek-typescript",
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
@@ -12,10 +12,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@types/http-errors": "^1.6.2",
-    "@types/joi": "^14.3.3",
-    "@types/morgan": "^1.7.37",
-    "@types/passport": "^1.0.1",
     "bcrypt": "^3.0.6",
     "bluebird": "^3.5.5",
     "cookie-parser": "^1.4.4",
@@ -34,6 +30,10 @@
     "sequelize": "^4.44.3"
   },
   "devDependencies": {
+    "@types/http-errors": "^1.6.2",
+    "@types/joi": "^14.3.3",
+    "@types/morgan": "^1.7.37",
+    "@types/passport": "^1.0.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/express": "^4.17.1",
     "@types/node": "^12.7.8",
