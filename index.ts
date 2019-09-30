@@ -7,8 +7,9 @@ import AuthRouter from './app/routes/auth-route'
 import UserRouter from './app/routes/user'
 import CourseRouter from './app/routes/courses'
 import IndexRouter from './app/routes/index'
+import strategy from './app/middlewares/auth'
 import globalErrorHandler from './app/error-handler/global-error-handler'
-import * as path from "path";
+import path from "path";
 
 
 export default class App {
@@ -18,8 +19,10 @@ export default class App {
         this.app = express();
         this.port = port;
         this.configuration();
-        this.initializeControllers(controllers)
+        this.initializePassport();
+        this.initializeControllers(controllers);
         this.initializeErrorHandling();
+
     }
 
     private configuration() {
@@ -30,7 +33,11 @@ export default class App {
         this.app.use(express.urlencoded({ extended: false }));
         this.app.use(cookieParser());
         this.app.use(express.static(path.join(__dirname, 'public')));
+    }
+
+    private initializePassport() {
         this.app.use(passport.initialize());
+        passport.use(strategy.jwtAuthStrategy);
     }
 
     private initializeControllers(controllers) {

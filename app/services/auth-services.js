@@ -16,7 +16,6 @@ module.exports = async function (req, res, next) {
 
     var payload = { id: user.id };
     var token = jwt.sign(payload, config.jwt.secretOrKey);
-    console.log(config.jwt.secretOrKey);
 
     res.header('x-auth-token', token).send({
         id: user.id,

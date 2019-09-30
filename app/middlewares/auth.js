@@ -6,9 +6,9 @@ const userModel = require('../models').User;
 const config = require('../config/env-config');
 const { generateErrorResponse } = require('../common/response-generator')
 
-const jwtOptions = {
-  secretOrKey: config.jwt.secretOrKey
-};
+const jwtOptions = {};
+
+jwtOptions.secretOrKey = config.jwt.secretOrKey
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 
 async function jwtAuthenticate(jwt_payload, next) {
