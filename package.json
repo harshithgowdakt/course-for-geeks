@@ -1,0 +1,42 @@
+{
+  "name": "express-example",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "description": "Express app for demonstrating rest api, sequelize, migrations, global error handlers, generic response generator",
+  "author": {
+    "name": "Chandan Kumar V",
+    "email": "chandan.kumarv.official@gmail.com"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@types/http-errors": "^1.6.2",
+    "@types/joi": "^14.3.3",
+    "@types/morgan": "^1.7.37",
+    "@types/passport": "^1.0.1",
+    "bcrypt": "^3.0.6",
+    "bluebird": "^3.5.5",
+    "cookie-parser": "^1.4.4",
+    "debug": "^2.6.9",
+    "ejs": "^2.5.9",
+    "express": "^4.16.4",
+    "http-errors": "^1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.15",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "properties-reader": "0.0.16",
+    "sequelize": "^4.44.3"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.8",
+    "eslint": "^5.13.0"
+  }
+}
