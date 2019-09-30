@@ -10,10 +10,10 @@ class CourseRouter{
     }
     private intializeRoutes() {
         this.router.get('/courses', isAuthenticated, CourseHandler.getAllCourses);
-        this.router.get('/courses/:id', isAuthenticated, CourseHandler.getAllCourses);
-        this.router.post('/users',isAuthenticated,CourseHandler.getAllCourses);
-        this.router.delete('/usetrs/:id', isAuthenticated,CourseHandler.getAllCourses);
-        this.router.put('/:id', isAuthenticated,CourseHandler.getAllCourses)
+        this.router.get('/courses/:id', isAuthenticated, CourseHandler.getCourseById);
+        this.router.post('/courses',isAuthenticated,CourseHandler.createCourse);
+        this.router.delete('/courses/:id', isAuthenticated,CourseHandler.deleteCourse);
+        this.router.put('/courses/:id', isAuthenticated,CourseHandler.updateCourse)
     }
 }
 

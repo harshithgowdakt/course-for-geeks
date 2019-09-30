@@ -145,6 +145,8 @@ var UesrHandler = /** @class */ (function () {
                         return [4 /*yield*/, userModel.destory(req.params.id)];
                     case 1:
                         user = _a.sent();
+                        if (!user)
+                            return [2 /*return*/, res.status(400).send('User with given ID does not exists')];
                         res.send(generateSuccessResponse({
                             id: user.id,
                             name: user.name,

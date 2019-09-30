@@ -13,10 +13,10 @@ var CourseRouter = /** @class */ (function () {
     }
     CourseRouter.prototype.intializeRoutes = function () {
         this.router.get('/courses', isAuthenticated, course_1["default"].getAllCourses);
-        this.router.get('/courses/:id', isAuthenticated, course_1["default"].getAllCourses);
-        this.router.post('/users', isAuthenticated, course_1["default"].getAllCourses);
-        this.router["delete"]('/usetrs/:id', isAuthenticated, course_1["default"].getAllCourses);
-        this.router.put('/:id', isAuthenticated, course_1["default"].getAllCourses);
+        this.router.get('/courses/:id', isAuthenticated, course_1["default"].getCourseById);
+        this.router.post('/courses', isAuthenticated, course_1["default"].createCourse);
+        this.router["delete"]('/courses/:id', isAuthenticated, course_1["default"].deleteCourse);
+        this.router.put('/courses/:id', isAuthenticated, course_1["default"].updateCourse);
     };
     return CourseRouter;
 }());

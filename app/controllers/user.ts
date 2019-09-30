@@ -57,6 +57,8 @@ class UesrHandler {
     public static async  deleteUser(req, res, next) {
         try {
             let user = await userModel.destory(req.params.id)
+            if (!user) return res.status(400).send('User with given ID does not exists');
+            
             res.send(generateSuccessResponse({
                 id: user.id,
                 name: user.name,

@@ -13,8 +13,8 @@ import * as path from "path";
 
 export default class App {
     public app: express.Application;
-    public port: number;
-    constructor(controllers, port) {
+    public port: string | number;
+    constructor(controllers, port: string | number) {
         this.app = express();
         this.port = port;
         this.configuration();
@@ -22,7 +22,7 @@ export default class App {
         this.initializeErrorHandling();
     }
 
-    public configuration() {
+    private configuration() {
         this.app.set('views', path.join(__dirname, 'views'));
         this.app.set('view engine', 'ejs');
         this.app.use(logger('dev'));
@@ -39,7 +39,7 @@ export default class App {
         });
     }
 
-    public initializeErrorHandling() {
+    private initializeErrorHandling() {
         this.app.use(function (req, res, next) {
             next(createError(404));
         });

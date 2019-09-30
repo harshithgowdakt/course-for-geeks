@@ -37,20 +37,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var generateSuccessResponse = require('../common/response-generator').generateSuccessResponse;
 var courseModel = require('../models').Course;
+var validateCourse = require('../models/course-validation.js');
 var CourseHandler = /** @class */ (function () {
     function CourseHandler() {
     }
     CourseHandler.getAllCourses = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_1;
+            var courses, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, courseModel.findAll()];
                     case 1:
-                        result = _a.sent();
-                        res.send(generateSuccessResponse(result, 'course.list'));
+                        courses = _a.sent();
+                        res.send(generateSuccessResponse(courses, 'course.list'));
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
@@ -63,15 +64,17 @@ var CourseHandler = /** @class */ (function () {
     };
     CourseHandler.getCourseById = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_2;
+            var course, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, courseModel.findByPk(req.params.id)];
                     case 1:
-                        result = _a.sent();
-                        res.send(generateSuccessResponse(result, 'course.details'));
+                        course = _a.sent();
+                        if (!course)
+                            return [2 /*return*/, res.status(400).send('Course with given ID does not exists')];
+                        res.send(generateSuccessResponse(course, 'course.details'));
                         return [3 /*break*/, 3];
                     case 2:
                         error_2 = _a.sent();
@@ -84,15 +87,18 @@ var CourseHandler = /** @class */ (function () {
     };
     CourseHandler.createCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_3;
+            var error, course, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
+                        error = validateCourse(req.body).error;
+                        if (error)
+                            return [2 /*return*/, res.status(400).send(error.details[0].message)];
                         return [4 /*yield*/, courseModel.create(req.body)];
                     case 1:
-                        result = _a.sent();
-                        res.send(generateSuccessResponse(result, 'course.registration.success'));
+                        course = _a.sent();
+                        res.send(generateSuccessResponse(course, 'course.registration.success'));
                         return [3 /*break*/, 3];
                     case 2:
                         error_3 = _a.sent();
@@ -105,42 +111,55 @@ var CourseHandler = /** @class */ (function () {
     };
     CourseHandler.deleteCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_4;
+            var course, error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, courseModel.destory(req.params.id)];
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, courseModel.findByPk(req.params.id)];
                     case 1:
-                        result = _a.sent();
-                        res.send(generateSuccessResponse(result, 'deleted successfully'));
-                        return [3 /*break*/, 3];
+                        course = _a.sent();
+                        if (!course)
+                            return [2 /*return*/, res.status(400).send('Course with given ID does not exists')];
+                        return [4 /*yield*/, courseModel.destroy({ where: { id: req.params.id } })];
                     case 2:
+                        course = _a.sent();
+                        res.send(generateSuccessResponse(course, 'deleted.successfully'));
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_4 = _a.sent();
                         next(error_4);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     CourseHandler.updateCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, error_5;
+            var error, course, isUpdate, error_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, courseModel.update(req.params.id, req.body.name)];
+                        _a.trys.push([0, 3, , 4]);
+                        error = validateCourse(req.body).error;
+                        if (error)
+                            return [2 /*return*/, res.status(400).send(error.details[0].message)];
+                        return [4 /*yield*/, courseModel.findByPk(req.params.id)];
                     case 1:
-                        result = _a.sent();
-                        res.send(generateSuccessResponse(result, 'updated successfully'));
-                        return [3 /*break*/, 3];
+                        course = _a.sent();
+                        if (!course)
+                            return [2 /*return*/, res.status(400).send('Course with given ID does not exists')];
+                        return [4 /*yield*/, courseModel.update({ name: req.body.name }, { where: { id: req.params.id } })];
                     case 2:
+                        isUpdate = _a.sent();
+                        res.send(generateSuccessResponse(isUpdate, 'updated.successfully'));
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_5 = _a.sent();
                         next(error_5);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
