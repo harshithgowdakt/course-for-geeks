@@ -3,7 +3,7 @@ import CourseHandler from '../controllers/course';
 const auth = require('../middlewares/auth');
 const isAuthenticated = require('../middlewares/auth-jwt');
 
-class CourseRouter {
+export default class CourseRoutes {
     public router = express.Router();
 
     constructor() {
@@ -18,7 +18,6 @@ class CourseRouter {
     }
 }
 
-export default CourseRouter;
 
 
 

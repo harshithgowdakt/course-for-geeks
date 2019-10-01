@@ -7,18 +7,18 @@ var express_1 = __importDefault(require("express"));
 var course_1 = __importDefault(require("../controllers/course"));
 var auth = require('../middlewares/auth');
 var isAuthenticated = require('../middlewares/auth-jwt');
-var CourseRouter = /** @class */ (function () {
-    function CourseRouter() {
+var CourseRoutes = /** @class */ (function () {
+    function CourseRoutes() {
         this.router = express_1["default"].Router();
         this.intializeRoutes();
     }
-    CourseRouter.prototype.intializeRoutes = function () {
+    CourseRoutes.prototype.intializeRoutes = function () {
         this.router.get('/courses', isAuthenticated, course_1["default"].getAllCourses);
         this.router.get('/courses/:id', isAuthenticated, course_1["default"].getCourseById);
         this.router.post('/courses', isAuthenticated, course_1["default"].createCourse);
         this.router["delete"]('/courses/:id', isAuthenticated, course_1["default"].deleteCourse);
         this.router.put('/courses/:id', isAuthenticated, course_1["default"].updateCourse);
     };
-    return CourseRouter;
+    return CourseRoutes;
 }());
-exports["default"] = CourseRouter;
+exports["default"] = CourseRoutes;

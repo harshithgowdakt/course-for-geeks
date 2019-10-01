@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var http_errors_1 = __importDefault(require("http-errors"));
-var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var morgan_1 = __importDefault(require("morgan"));
 var express_1 = __importDefault(require("express"));
 var passport_1 = __importDefault(require("passport"));
@@ -29,8 +28,6 @@ var App = /** @class */ (function () {
         this.app.set('view engine', 'ejs');
         this.app.use(morgan_1["default"]('dev'));
         this.app.use(express_1["default"].json());
-        this.app.use(express_1["default"].urlencoded({ extended: false }));
-        this.app.use(cookie_parser_1["default"]());
         this.app.use(express_1["default"].static(path_1["default"].join(__dirname, 'public')));
     };
     App.prototype.initializePassport = function () {

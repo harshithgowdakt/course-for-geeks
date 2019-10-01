@@ -1,7 +1,7 @@
 import express from "express";
 import login from '../services/auth-services';
 
-class AuthRouter {
+export default class AuthRoute {
   public router = express.Router();
 
   constructor() {
@@ -14,4 +14,4 @@ class AuthRouter {
   }
 }
 
-export default AuthRouter;
+

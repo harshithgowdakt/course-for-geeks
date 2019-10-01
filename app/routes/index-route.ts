@@ -1,7 +1,7 @@
 import express from "express";
 var router = express.Router();
 
-class IndexRouter {
+export default class IndexRoute {
   public router = express.Router();
 
   constructor() {
@@ -14,5 +14,3 @@ class IndexRouter {
     });
   }
 }
-
-export default IndexRouter;
