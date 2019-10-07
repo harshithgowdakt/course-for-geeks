@@ -2,7 +2,7 @@ const { generateSuccessResponse } = require('../common/response-generator');
 const courseModel = require('../models').Course;
 const validateCourse = require('../models/course-validation.js');
 
-class CourseHandler {
+export default class CourseHandler {
     public static async  getAllCourses(req, res, next) {
         try {
             let courses = await courseModel.findAll();
@@ -60,5 +60,3 @@ class CourseHandler {
         }
     }
 }
-
-export default CourseHandler;

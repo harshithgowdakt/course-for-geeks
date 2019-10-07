@@ -5,16 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var express_1 = __importDefault(require("express"));
 var router = express_1["default"].Router();
-var IndexRouter = /** @class */ (function () {
-    function IndexRouter() {
+var IndexRoute = /** @class */ (function () {
+    function IndexRoute() {
         this.router = express_1["default"].Router();
         this.intializeRoutes();
     }
-    IndexRouter.prototype.intializeRoutes = function () {
+    IndexRoute.prototype.intializeRoutes = function () {
         this.router.get('/', function (req, res, next) {
             res.render('index', { title: 'Express' });
         });
     };
-    return IndexRouter;
+    return IndexRoute;
 }());
-exports["default"] = IndexRouter;
+exports["default"] = IndexRoute;

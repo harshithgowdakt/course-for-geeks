@@ -8,9 +8,9 @@ var morgan_1 = __importDefault(require("morgan"));
 var express_1 = __importDefault(require("express"));
 var passport_1 = __importDefault(require("passport"));
 var auth_route_1 = __importDefault(require("./app/routes/auth-route"));
-var user_1 = __importDefault(require("./app/routes/user"));
-var courses_1 = __importDefault(require("./app/routes/courses"));
-var index_1 = __importDefault(require("./app/routes/index"));
+var user_routes_1 = __importDefault(require("./app/routes/user-routes"));
+var course_routes_1 = __importDefault(require("./app/routes/course-routes"));
+var index_route_1 = __importDefault(require("./app/routes/index-route"));
 var auth_1 = __importDefault(require("./app/middlewares/auth"));
 var global_error_handler_1 = __importDefault(require("./app/error-handler/global-error-handler"));
 var path_1 = __importDefault(require("path"));
@@ -56,9 +56,9 @@ var App = /** @class */ (function () {
 exports["default"] = App;
 var port = process.env.PORT || 3000;
 var app = new App([
-    new user_1["default"](),
-    new index_1["default"](),
+    new index_route_1["default"](),
     new auth_route_1["default"](),
-    new courses_1["default"]()
+    new user_routes_1["default"](),
+    new course_routes_1["default"]()
 ], port);
 app.listen();

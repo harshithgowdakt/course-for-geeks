@@ -4,7 +4,7 @@ const userModel = require('../models').User;
 const validateUser = require('../models/user-validation');
 import bcrypt from 'bcrypt';
 
-class UesrHandler {
+export default class UesrHandler {
     public static async getAllUsers(req, res, next) {
         try {
             let users = await userModel.findAll({
@@ -56,4 +56,3 @@ class UesrHandler {
     }
 }
 
-export default UesrHandler;

@@ -20,7 +20,6 @@ export default class App {
         this.initializePassport();
         this.initializeControllers(controllers);
         this.initializeErrorHandling();
-
     }
 
     private configuration() {
