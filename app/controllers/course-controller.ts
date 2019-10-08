@@ -1,6 +1,6 @@
 const { generateSuccessResponse } = require('../common/response-generator');
 const courseModel = require('../models').Course;
-const validateCourse = require('../models/course-validation.js');
+import Validation from '../validation/validation.js'
 
 export default class CourseController {
     public static async  getAllCourses(req, res, next) {
@@ -24,7 +24,7 @@ export default class CourseController {
     }
     public static async createCourse(req, res, next) {
         try {
-            const { error } = validateCourse(req.body);
+            const { error } = Validation.validateCourse(req.body);
             if (error) return res.status(400).send(error.details[0].message);
 
             let course = await courseModel.create(req.body);
@@ -50,7 +50,7 @@ export default class CourseController {
             let course = await courseModel.findByPk(req.params.id);
             if (!course) return res.status(400).send('Course with given ID does not exists');
             
-            const { error } = validateCourse(req.body);
+            const { error } = Validation.validateCourse(req.body);
             if (error) return res.status(400).send(error.details[0].message);
 
             let isUpdate = await courseModel.update({ name: req.body.name }, { where: { id: req.params.id } });

@@ -1,6 +1,6 @@
 import * as express from "express";
 import UserController from "../controllers/user-controller"
-var isAuthenticated = require('../middlewares/auth-jwt');
+import Authentication from '../middlewares/authentiction'
 
 export default class UserRoutes {
     public router = express.Router();
@@ -10,8 +10,8 @@ export default class UserRoutes {
     }
 
     public intializeRoutes() {
-        this.router.get('/users', isAuthenticated, UserController.getAllUsers);
-        this.router.get('/users/:id', isAuthenticated, UserController.getUserById);
+        this.router.get('/users', Authentication.isAuthenticated, UserController.getAllUsers);
+        this.router.get('/users/:id', Authentication.isAuthenticated, UserController.getUserById);
         this.router.post('/users/register', UserController.createUser);
     }
 

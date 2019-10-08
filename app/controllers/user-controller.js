@@ -41,7 +41,7 @@ exports.__esModule = true;
 var generateSuccessResponse = require('../common/response-generator').generateSuccessResponse;
 var appConstants = require('../common/app-constants');
 var userModel = require('../models').User;
-var validateUser = require('../models/user-validation');
+var validation_js_1 = __importDefault(require("../validation/validation.js"));
 var bcrypt_1 = __importDefault(require("bcrypt"));
 var UesrController = /** @class */ (function () {
     function UesrController() {
@@ -105,7 +105,7 @@ var UesrController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 4, , 5]);
-                        error = validateUser(req.body).error;
+                        error = validation_js_1["default"].validateUser(req.body).error;
                         if (error)
                             return [2 /*return*/, res.status(400).send(error.details[0].message)];
                         return [4 /*yield*/, userModel.findOne({ where: { email: req.body.email } })];

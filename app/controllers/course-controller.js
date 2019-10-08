@@ -34,10 +34,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 exports.__esModule = true;
 var generateSuccessResponse = require('../common/response-generator').generateSuccessResponse;
 var courseModel = require('../models').Course;
-var validateCourse = require('../models/course-validation.js');
+var validation_js_1 = __importDefault(require("../validation/validation.js"));
 var CourseController = /** @class */ (function () {
     function CourseController() {
     }
@@ -92,7 +95,7 @@ var CourseController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        error = validateCourse(req.body).error;
+                        error = validation_js_1["default"].validateCourse(req.body).error;
                         if (error)
                             return [2 /*return*/, res.status(400).send(error.details[0].message)];
                         return [4 /*yield*/, courseModel.create(req.body)];
@@ -147,7 +150,7 @@ var CourseController = /** @class */ (function () {
                         course = _a.sent();
                         if (!course)
                             return [2 /*return*/, res.status(400).send('Course with given ID does not exists')];
-                        error = validateCourse(req.body).error;
+                        error = validation_js_1["default"].validateCourse(req.body).error;
                         if (error)
                             return [2 /*return*/, res.status(400).send(error.details[0].message)];
                         return [4 /*yield*/, courseModel.update({ name: req.body.name }, { where: { id: req.params.id } })];

@@ -1,7 +1,7 @@
 const { generateSuccessResponse } = require('../common/response-generator');
 const appConstants = require('../common/app-constants');
 const userModel = require('../models').User;
-const validateUser = require('../models/user-validation');
+import Validation from '../validation/validation.js'
 import bcrypt from 'bcrypt';
 
 export default class UesrController {
@@ -35,7 +35,7 @@ export default class UesrController {
 
     public static async createUser(req, res, next) {
         try {
-            const { error } = validateUser(req.body);
+            const { error } = Validation.validateUser(req.body);
             if (error) return res.status(400).send(error.details[0].message);
 
             let isUser = await userModel.findOne({ where: { email: req.body.email } });
