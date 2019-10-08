@@ -11,7 +11,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var express = __importStar(require("express"));
-var user_1 = __importDefault(require("../controllers/user"));
+var user_controller_1 = __importDefault(require("../controllers/user-controller"));
 var isAuthenticated = require('../middlewares/auth-jwt');
 var UserRoutes = /** @class */ (function () {
     function UserRoutes() {
@@ -19,9 +19,9 @@ var UserRoutes = /** @class */ (function () {
         this.intializeRoutes();
     }
     UserRoutes.prototype.intializeRoutes = function () {
-        this.router.get('/users', isAuthenticated, user_1["default"].getAllUsers);
-        this.router.get('/users/:id', isAuthenticated, user_1["default"].getUserById);
-        this.router.post('/users/register', user_1["default"].createUser);
+        this.router.get('/users', isAuthenticated, user_controller_1["default"].getAllUsers);
+        this.router.get('/users/:id', isAuthenticated, user_controller_1["default"].getUserById);
+        this.router.post('/users/register', user_controller_1["default"].createUser);
     };
     return UserRoutes;
 }());

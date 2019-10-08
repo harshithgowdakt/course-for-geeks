@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var express_1 = __importDefault(require("express"));
-var course_1 = __importDefault(require("../controllers/course"));
+var course_controller_1 = __importDefault(require("../controllers/course-controller"));
 var auth = require('../middlewares/auth');
 var isAuthenticated = require('../middlewares/auth-jwt');
 var CourseRoutes = /** @class */ (function () {
@@ -13,11 +13,11 @@ var CourseRoutes = /** @class */ (function () {
         this.intializeRoutes();
     }
     CourseRoutes.prototype.intializeRoutes = function () {
-        this.router.get('/courses', isAuthenticated, course_1["default"].getAllCourses);
-        this.router.get('/courses/:id', isAuthenticated, course_1["default"].getCourseById);
-        this.router.post('/courses', isAuthenticated, course_1["default"].createCourse);
-        this.router["delete"]('/courses/:id', isAuthenticated, course_1["default"].deleteCourse);
-        this.router.put('/courses/:id', isAuthenticated, course_1["default"].updateCourse);
+        this.router.get('/courses', isAuthenticated, course_controller_1["default"].getAllCourses);
+        this.router.get('/courses/:id', isAuthenticated, course_controller_1["default"].getCourseById);
+        this.router.post('/courses', isAuthenticated, course_controller_1["default"].createCourse);
+        this.router["delete"]('/courses/:id', isAuthenticated, course_controller_1["default"].deleteCourse);
+        this.router.put('/courses/:id', isAuthenticated, course_controller_1["default"].updateCourse);
     };
     return CourseRoutes;
 }());

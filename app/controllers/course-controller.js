@@ -38,10 +38,10 @@ exports.__esModule = true;
 var generateSuccessResponse = require('../common/response-generator').generateSuccessResponse;
 var courseModel = require('../models').Course;
 var validateCourse = require('../models/course-validation.js');
-var CourseHandler = /** @class */ (function () {
-    function CourseHandler() {
+var CourseController = /** @class */ (function () {
+    function CourseController() {
     }
-    CourseHandler.getAllCourses = function (req, res, next) {
+    CourseController.getAllCourses = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var courses, error_1;
             return __generator(this, function (_a) {
@@ -62,7 +62,7 @@ var CourseHandler = /** @class */ (function () {
             });
         });
     };
-    CourseHandler.getCourseById = function (req, res, next) {
+    CourseController.getCourseById = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var course, error_2;
             return __generator(this, function (_a) {
@@ -85,7 +85,7 @@ var CourseHandler = /** @class */ (function () {
             });
         });
     };
-    CourseHandler.createCourse = function (req, res, next) {
+    CourseController.createCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var error, course, error_3;
             return __generator(this, function (_a) {
@@ -109,7 +109,7 @@ var CourseHandler = /** @class */ (function () {
             });
         });
     };
-    CourseHandler.deleteCourse = function (req, res, next) {
+    CourseController.deleteCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var course, error_4;
             return __generator(this, function (_a) {
@@ -135,7 +135,7 @@ var CourseHandler = /** @class */ (function () {
             });
         });
     };
-    CourseHandler.updateCourse = function (req, res, next) {
+    CourseController.updateCourse = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var course, error, isUpdate, error_5;
             return __generator(this, function (_a) {
@@ -164,6 +164,6 @@ var CourseHandler = /** @class */ (function () {
             });
         });
     };
-    return CourseHandler;
+    return CourseController;
 }());
-exports["default"] = CourseHandler;
+exports["default"] = CourseController;

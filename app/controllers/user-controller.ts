@@ -4,7 +4,7 @@ const userModel = require('../models').User;
 const validateUser = require('../models/user-validation');
 import bcrypt from 'bcrypt';
 
-export default class UesrHandler {
+export default class UesrController {
     public static async getAllUsers(req, res, next) {
         try {
             let users = await userModel.findAll({

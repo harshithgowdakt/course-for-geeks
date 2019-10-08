@@ -1,5 +1,5 @@
 import express from 'express';
-import CourseHandler from '../controllers/course';
+import CourseController from '../controllers/course-controller';
 const auth = require('../middlewares/auth');
 const isAuthenticated = require('../middlewares/auth-jwt');
 
@@ -10,11 +10,11 @@ export default class CourseRoutes {
         this.intializeRoutes();
     }
     private intializeRoutes() {
-        this.router.get('/courses', isAuthenticated, CourseHandler.getAllCourses);
-        this.router.get('/courses/:id', isAuthenticated, CourseHandler.getCourseById);
-        this.router.post('/courses', isAuthenticated, CourseHandler.createCourse);
-        this.router.delete('/courses/:id', isAuthenticated, CourseHandler.deleteCourse);
-        this.router.put('/courses/:id', isAuthenticated, CourseHandler.updateCourse)
+        this.router.get('/courses', isAuthenticated, CourseController.getAllCourses);
+        this.router.get('/courses/:id', isAuthenticated, CourseController.getCourseById);
+        this.router.post('/courses', isAuthenticated, CourseController.createCourse);
+        this.router.delete('/courses/:id', isAuthenticated, CourseController.deleteCourse);
+        this.router.put('/courses/:id', isAuthenticated, CourseController.updateCourse)
     }
 }
 

@@ -1,5 +1,5 @@
-import express from "express";
-import login from '../services/auth-services';
+import express from "express"
+import AuthController from '../controllers/auth-controller'
 
 export default class AuthRoute {
   public router = express.Router();
@@ -7,10 +7,9 @@ export default class AuthRoute {
   constructor() {
     this.intializeRoutes();
   }
+
   public intializeRoutes() {
-    this.router.post('/auth/login', function (req, res, next) {
-      login(req, res, next)
-    });
+    this.router.post('/auth/login', AuthController.login);
   }
 }
 

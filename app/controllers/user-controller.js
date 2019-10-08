@@ -43,10 +43,10 @@ var appConstants = require('../common/app-constants');
 var userModel = require('../models').User;
 var validateUser = require('../models/user-validation');
 var bcrypt_1 = __importDefault(require("bcrypt"));
-var UesrHandler = /** @class */ (function () {
-    function UesrHandler() {
+var UesrController = /** @class */ (function () {
+    function UesrController() {
     }
-    UesrHandler.getAllUsers = function (req, res, next) {
+    UesrController.getAllUsers = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var users, error_1;
             return __generator(this, function (_a) {
@@ -71,7 +71,7 @@ var UesrHandler = /** @class */ (function () {
             });
         });
     };
-    UesrHandler.getUserById = function (req, res, next) {
+    UesrController.getUserById = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var user, error_2;
             return __generator(this, function (_a) {
@@ -98,7 +98,7 @@ var UesrHandler = /** @class */ (function () {
             });
         });
     };
-    UesrHandler.createUser = function (req, res, next) {
+    UesrController.createUser = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var error, isUser, hashedPassword, user, error_3;
             return __generator(this, function (_a) {
@@ -135,6 +135,6 @@ var UesrHandler = /** @class */ (function () {
             });
         });
     };
-    return UesrHandler;
+    return UesrController;
 }());
-exports["default"] = UesrHandler;
+exports["default"] = UesrController;
