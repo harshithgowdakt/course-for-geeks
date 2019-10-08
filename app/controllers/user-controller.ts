@@ -3,9 +3,10 @@ const appConstants = require('../common/app-constants');
 const userModel = require('../models').User;
 import Validation from '../validation/validation.js'
 import bcrypt from 'bcrypt';
+import { Request,Response, NextFunction } from 'express';
 
 export default class UesrController {
-    public static async getAllUsers(req, res, next) {
+    public static async getAllUsers(req: Request, res: Response, next: NextFunction) {
         try {
             let users = await userModel.findAll({
                 attributes: {
@@ -18,7 +19,7 @@ export default class UesrController {
         }
     }
 
-    public static async  getUserById(req, res, next) {
+    public static async  getUserById(req: Request, res: Response, next: NextFunction) {
         try {
             let user = await userModel.findByPk(req.params.id);
             if (!user) return res.status(400).send('User with given ID does not exists');
@@ -33,7 +34,7 @@ export default class UesrController {
         }
     }
 
-    public static async createUser(req, res, next) {
+    public static async createUser(req: Request, res: Response, next: NextFunction) {
         try {
             const { error } = Validation.validateUser(req.body);
             if (error) return res.status(400).send(error.details[0].message);

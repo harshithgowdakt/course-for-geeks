@@ -1,12 +1,13 @@
 import * as jwt from 'jsonwebtoken'
 import * as bcrypt from 'bcrypt'
-import Joi from 'joi'
+import * as Joi from 'joi'
+import { Request,Response, NextFunction } from 'express';
 const config = require('../config/env-config')
 const userModel = require('../models').User;
 
 export default class AuthController {
 
-    public static async login(req, res, next) {
+    public static async login(req: Request, res: Response, next: NextFunction) {
         const { error } = AuthController.validateUser(req.body);
         if (error) return res.status(400).send(error.details[0].message);
 
@@ -26,7 +27,7 @@ export default class AuthController {
         });
     }
 
-    private static validateUser(user) {
+    private static validateUser(user: Request) {
         const schema = {
             email: Joi.string().min(5).max(255).required().email(),
             password: Joi.string().min(5).max(255).required()

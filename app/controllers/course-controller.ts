@@ -1,9 +1,10 @@
 const { generateSuccessResponse } = require('../common/response-generator');
 const courseModel = require('../models').Course;
 import Validation from '../validation/validation.js'
+import { Request,Response, NextFunction } from 'express';
 
 export default class CourseController {
-    public static async  getAllCourses(req, res, next) {
+    public static async  getAllCourses(req:Request, res:Response, next:NextFunction) {
         try {
             let courses = await courseModel.findAll();
             res.send(generateSuccessResponse(courses, 'course.list'));
@@ -12,7 +13,7 @@ export default class CourseController {
         }
     }
 
-    public static async  getCourseById(req, res, next) {
+    public static async  getCourseById(req:Request, res:Response, next:NextFunction) {
         try {
             let course = await courseModel.findByPk(req.params.id);
             if (!course) return res.status(400).send('Course with given ID does not exists');
@@ -22,7 +23,7 @@ export default class CourseController {
             next(error);
         }
     }
-    public static async createCourse(req, res, next) {
+    public static async createCourse(req:Request, res:Response, next:NextFunction) {
         try {
             const { error } = Validation.validateCourse(req.body);
             if (error) return res.status(400).send(error.details[0].message);
@@ -33,7 +34,7 @@ export default class CourseController {
             next(error);
         }
     }
-    public static async  deleteCourse(req, res, next) {
+    public static async  deleteCourse(req:Request, res:Response, next:NextFunction) {
         try {
             let course = await courseModel.findByPk(req.params.id);
             if (!course) return res.status(400).send('Course with given ID does not exists');
@@ -45,7 +46,7 @@ export default class CourseController {
         }
     }
     
-    public static async updateCourse(req, res, next) {
+    public static async updateCourse(req:Request, res:Response, next:NextFunction) {
         try {
             let course = await courseModel.findByPk(req.params.id);
             if (!course) return res.status(400).send('Course with given ID does not exists');
