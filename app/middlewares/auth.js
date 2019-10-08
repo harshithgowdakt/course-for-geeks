@@ -1,10 +1,10 @@
+import ResponseGenerator from '../common/response-generator'
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 const ExtractJwt = passportJWT.ExtractJwt;
 const JwtStrategy = passportJWT.Strategy;
 const userModel = require('../models').User;
 const config = require('../config/env-config');
-const { generateErrorResponse } = require('../common/response-generator')
 
 const jwtOptions = {};
 
@@ -26,7 +26,7 @@ function isAuthenticated(req, res, next) {
       return next(err);
     }
     if (!user) {
-      res.status(401).send(generateErrorResponse("Unauthenticated request"));
+      res.status(401).send(ResponseGenerator.generateErrorResponse("Unauthenticated request"));
     } else {
       return next();
     }

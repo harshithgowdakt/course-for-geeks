@@ -5,15 +5,13 @@
   "license": "MIT",
   "description": "Express app for demonstrating rest api, sequelize, migrations, global error handlers, generic response generator",
   "author": {
-    "name": "Chandan Kumar V",
-    "email": "chandan.kumarv.official@gmail.com"
+    "name": "Harshithgowda K T",
+    "email": "harshithgowdaktpss@gmail.com"
   },
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@types/bcrypt": "^3.0.0",
-    "@types/jsonwebtoken": "^8.3.4",
     "bcrypt": "^3.0.6",
     "bluebird": "^3.5.5",
     "cookie-parser": "^1.4.4",
@@ -32,11 +30,14 @@
     "properties-reader": "0.0.16",
     "sequelize": "^4.44.3"
   },
-  "devDependencies": {
+  "devDependencies": {    
+    "@types/bcrypt": "^3.0.0",
     "@types/cookie-parser": "^1.4.2",
-    "@types/express": "^4.17.1",
     "@types/http-errors": "^1.6.2",
+    "@types/express": "^4.17.1",
+    "@types/jsonwebtoken": "^8.3.4",
     "@types/joi": "^14.3.3",
+    "@types/properties-reader": "0.0.1",
     "@types/morgan": "^1.7.37",
     "@types/node": "^12.7.8",
     "@types/passport": "^1.0.1",

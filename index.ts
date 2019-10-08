@@ -2,13 +2,13 @@ import createError from "http-errors"
 import logger from "morgan"
 import express from "express";
 import passport from "passport";
+import path from "path";
 import AuthRoute from './app/routes/auth-route'
 import UserRoutes from './app/routes/user-routes'
 import CourseRoutes from './app/routes/course-routes'
 import IndexRoute from './app/routes/index-route'
 import strategy from './app/middlewares/auth'
 import globalErrorHandler from './app/error-handler/global-error-handler'
-import path from "path";
 
 export default class App {
     public app: express.Application;
