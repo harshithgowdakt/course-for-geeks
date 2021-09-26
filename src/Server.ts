@@ -1,4 +1,3 @@
-import createError from "http-errors"
 import logger from "morgan"
 import express from "express";
 import passport from "passport";
@@ -43,9 +42,6 @@ export class App {
     }
 
     private initializeErrorHandling() {
-        this.app.use(function (req, res, next) {
-            next(createError(404));
-        });
         this.app.use(globalErrorHandler);
     }
 
