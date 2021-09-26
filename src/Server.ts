@@ -3,17 +3,17 @@ import logger from "morgan"
 import express from "express";
 import passport from "passport";
 import path from "path";
-import AuthRoute from './app/routes/auth-route'
-import UserRoutes from './app/routes/user-routes'
-import CourseRoutes from './app/routes/course-routes'
-import IndexRoute from './app/routes/index-route'
-import strategy from './app/middlewares/auth'
-import globalErrorHandler from './app/error-handler/global-error-handler'
+import AuthRoute from './routes/auth-route'
+import UserRoutes from './routes/user-routes'
+import CourseRoutes from './routes/course-routes'
+import IndexRoute from './routes/index-route'
+import * as strategy from './middlewares/auth'
+import globalErrorHandler from './error-handler/global-error-handler'
 
 export default class App {
     public app: express.Application;
     public port: string | number;
-    constructor(controllers, port: string | number) {
+    constructor(controllers: any, port: string | number) {
         this.app = express();
         this.port = port;
         this.configuration();
@@ -35,8 +35,8 @@ export default class App {
         passport.use(strategy.jwtAuthStrategy);
     }
 
-    private initializeControllers(controllers) {
-        controllers.forEach((controller) => {
+    private initializeControllers(controllers: any) {
+        controllers.forEach((controller: any) => {
             this.app.use('/', controller.router);
         });
     }
