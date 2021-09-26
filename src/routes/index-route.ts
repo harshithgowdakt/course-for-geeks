@@ -1,16 +1,16 @@
 import express from "express";
-var router = express.Router();
 
-export default class IndexRoute {
-  public router = express.Router();
+export class IndexRoute {
+    router: express.Router;
 
-  constructor() {
-    this.intializeRoutes();
-  }
+    constructor() {
+        this.router = express.Router();
+        this.intializeRoutes();
+    }
 
-  public intializeRoutes() {
-    this.router.get('/', function (req, res, next) {
-      res.render('index', { title: 'Express' });
-    });
-  }
+    private intializeRoutes() {
+        this.router.get('/', function (req, res, next) {
+            res.render('index', { title: 'Express' });
+        });
+    }
 }

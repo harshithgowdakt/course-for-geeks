@@ -1,16 +1,17 @@
 import express from "express"
-import AuthController from '../controllers/auth-controller'
+import { AuthController } from '../controllers/auth-controller'
 
-export default class AuthRoute {
-  public router = express.Router();
+export class AuthRoute {
+    router: express.Router;
 
-  constructor() {
-    this.intializeRoutes();
-  }
+    constructor() {
+        this.router = express.Router();
+        this.intializeRoutes();
+    }
 
-  public intializeRoutes() {
-    this.router.post('/auth/login', AuthController.login);
-  }
+    private intializeRoutes() {
+        this.router.post('/auth/login', AuthController.login);
+    }
 }
 
 

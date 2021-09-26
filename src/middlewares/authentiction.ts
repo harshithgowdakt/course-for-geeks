@@ -1,10 +1,11 @@
 import * as jwt from 'jsonwebtoken'
 import { Request, Response, NextFunction } from "express";
+
 const config = require('../config/env-config');
 
-export default class Authentication {
+export class Authentication {
 
-    public static isAuthenticated(req: Request, res: Response, next: NextFunction) {
+    static isAuthenticated(req: Request, res: Response, next: NextFunction) {
         const token = req.header('Authorization');
         if (!token) return res.status(401).send('Acess denied. no token provided');
 

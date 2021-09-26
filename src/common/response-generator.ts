@@ -4,8 +4,8 @@ import PropertiesReader from 'properties-reader'
 const responseMessages = PropertiesReader(path.join(__dirname, '../config/response-message.properties'));
 const errorMessages = PropertiesReader(path.join(__dirname, '../config/error-message.properties'));
 
-export default class ResponseGenerator {
-    public static generateSuccessResponse(data, msgKey) {
+export class ResponseGenerator {
+    static generateSuccessResponse(data, msgKey) {
         return {
             data: data,
             message: responseMessages.get(msgKey),
@@ -13,7 +13,7 @@ export default class ResponseGenerator {
         }
     }
 
-    public static generateErrorResponse(msg: string, debug?: any) {
+    static generateErrorResponse(msg: string, debug?: any) {
         return {
             message: msg,
             debug: debug,
@@ -21,7 +21,7 @@ export default class ResponseGenerator {
         }
     }
 
-    public static generateError(msgKey, status) {
+    static generateError(msgKey, status) {
         let message = errorMessages.get(msgKey);
         let error = <any>new Error(<string>message);
         error.status = status;

@@ -1,4 +1,4 @@
-import ResponseGenerator from '../common/response-generator'
+import { ResponseGenerator } from '../common/response-generator'
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 const ExtractJwt = passportJWT.ExtractJwt;

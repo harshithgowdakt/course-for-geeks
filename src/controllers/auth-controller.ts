@@ -1,13 +1,14 @@
 import * as jwt from 'jsonwebtoken'
 import * as bcrypt from 'bcrypt'
 import * as Joi from 'joi'
-import { Request,Response, NextFunction } from 'express';
-const config = require('../config/env-config')
-const userModel = require('../models').User;
+import { Request, Response, NextFunction } from 'express';
 
-export default class AuthController {
+const config = require('../config/env-config'),
+    userModel = require('../models').User;
 
-    public static async login(req: Request, res: Response, next: NextFunction) {
+export class AuthController {
+
+    static async login(req: Request, res: Response, next: NextFunction) {
         const { error } = AuthController.validateUser(req.body);
         if (error) return res.status(400).send(error.details[0].message);
 

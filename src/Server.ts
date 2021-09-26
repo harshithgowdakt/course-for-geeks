@@ -3,16 +3,17 @@ import logger from "morgan"
 import express from "express";
 import passport from "passport";
 import path from "path";
-import AuthRoute from './routes/auth-route'
-import UserRoutes from './routes/user-routes'
-import CourseRoutes from './routes/course-routes'
-import IndexRoute from './routes/index-route'
+import { AuthRoute } from './routes/auth-route'
+import { UserRoutes } from './routes/user-routes'
+import { CourseRoutes } from './routes/course-routes'
+import { IndexRoute } from './routes/index-route'
 import { jwtAuthStrategy } from './middlewares/auth'
-import globalErrorHandler from './error-handler/global-error-handler'
+import { globalErrorHandler } from './error-handler/global-error-handler'
 
-export default class App {
-    public app: express.Application;
-    public port: string | number;
+export class App {
+    app: express.Application;
+    port: string | number;
+
     constructor(controllers: any, port: string | number) {
         this.app = express();
         this.port = port;
@@ -27,7 +28,7 @@ export default class App {
         this.app.set('view engine', 'ejs');
         this.app.use(logger('dev'));
         this.app.use(express.json());
-        this.app.use(express.static(path.join(__dirname, 'public')));
+        this.app.use(express.static(path.join(__dirname, '')));
     }
 
     private initializePassport() {
@@ -48,7 +49,7 @@ export default class App {
         this.app.use(globalErrorHandler);
     }
 
-    public listen() {
+    listen() {
         this.app.listen(this.port, () => {
             console.log(`App listening on the port ${port}`);
         });
