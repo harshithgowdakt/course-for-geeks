@@ -11,8 +11,8 @@ export class UserRoutes {
     }
 
     private intializeRoutes() {
-        this.router.get('/users', Authentication.isAuthenticated, UserController.getAllUsers);
-        this.router.get('/users/:id', Authentication.isAuthenticated, UserController.getUserById);
-        this.router.post('/users', UserController.createUser);
+        this.router.get('/internal/api/v1/users', Authentication.isAuthenticated, UserController.getAllUsers);
+        this.router.get('/internal/api/v1/users/:id', Authentication.isAuthenticated, UserController.getUserById);
+        this.router.post('/internal/api/v1/users', UserController.createUser);
     }
 }
