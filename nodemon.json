@@ -1,7 +1,7 @@
 {
-  "ignore": [
-    "node_modules/*",
-    "dist/*"
-  ],
-  "delay": "1000"
+    "ignore": [
+        "node_modules/*",
+        "dist/*"
+    ],
+    "delay": "1000"
 }
