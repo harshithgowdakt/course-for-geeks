@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "start",
+            "program": "${workspaceFolder}/dist/Server.js",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "${defaultBuildTask}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "start:ts",
+            "program": "${workspaceFolder}/src/Server.ts",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node"
+        }
+    ]
+}
