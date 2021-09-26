@@ -7,7 +7,7 @@ import AuthRoute from './routes/auth-route'
 import UserRoutes from './routes/user-routes'
 import CourseRoutes from './routes/course-routes'
 import IndexRoute from './routes/index-route'
-import * as strategy from './middlewares/auth'
+import { jwtAuthStrategy } from './middlewares/auth'
 import globalErrorHandler from './error-handler/global-error-handler'
 
 export default class App {
@@ -32,7 +32,7 @@ export default class App {
 
     private initializePassport() {
         this.app.use(passport.initialize());
-        passport.use(strategy.jwtAuthStrategy);
+        passport.use(jwtAuthStrategy);
     }
 
     private initializeControllers(controllers: any) {

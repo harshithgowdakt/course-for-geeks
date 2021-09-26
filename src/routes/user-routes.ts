@@ -12,7 +12,7 @@ export default class UserRoutes {
     public intializeRoutes() {
         this.router.get('/users', Authentication.isAuthenticated, UserController.getAllUsers);
         this.router.get('/users/:id', Authentication.isAuthenticated, UserController.getUserById);
-        this.router.post('/users/register', UserController.createUser);
+        this.router.post('/users', UserController.createUser);
     }
 
 }

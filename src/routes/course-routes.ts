@@ -10,11 +10,11 @@ export default class CourseRoutes {
         this.intializeRoutes();
     }
     private intializeRoutes() {
-        this.router.get('/courses',  Authentication.isAuthenticated, CourseController.getAllCourses);
-        this.router.get('/courses/:id', Authentication.isAuthenticated, CourseController.getCourseById);
-        this.router.post('/courses', Authentication.isAuthenticated, CourseController.createCourse);
-        this.router.delete('/courses/:id', Authentication.isAuthenticated, CourseController.deleteCourse);
-        this.router.put('/courses/:id', Authentication.isAuthenticated, CourseController.updateCourse)
+        this.router.post('/internal/api/v1/courses', Authentication.isAuthenticated, CourseController.createCourse);
+        this.router.get('/internal/api/v1/courses', Authentication.isAuthenticated, CourseController.getAllCourses);
+        this.router.get('/internal/api/v1/courses/:id', Authentication.isAuthenticated, CourseController.getCourseById);
+        this.router.put('/internal/api/v1/courses/:id', Authentication.isAuthenticated, CourseController.updateCourse)
+        this.router.delete('/internal/api/v1/courses/:id', Authentication.isAuthenticated, CourseController.deleteCourse);
     }
 }
 

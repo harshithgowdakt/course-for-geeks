@@ -13,7 +13,7 @@ export default class ResponseGenerator {
         }
     }
 
-    public static generateErrorResponse(msg, debug) {
+    public static generateErrorResponse(msg: string, debug?: any) {
         return {
             message: msg,
             debug: debug,
@@ -22,7 +22,8 @@ export default class ResponseGenerator {
     }
 
     public static generateError(msgKey, status) {
-        let error = <any>new Error(errorMessages.get(msgKey));
+        let message = errorMessages.get(msgKey);
+        let error = <any>new Error(<string>message);
         error.status = status;
         return error;
     }
