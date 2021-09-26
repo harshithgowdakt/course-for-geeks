@@ -1,14 +1,14 @@
 {
   "apps": [
     {
-      "name": "course-for-geek",
+      "name": "course-for-geeks",
       "script": "./dist/Server.js",
       "merge_logs": true,
       "instances": 1,
       "log_date_format": "HH:mm Z  DD-MM-YYY",
       "exec_mode": "fork",
-      "error_file": "./logs/course-for-geek-error.log",
-      "out_file": "./logs/course-for-geek-out.log"
+      "error_file": "./logs/course-for-geeks-error.log",
+      "out_file": "./logs/course-for-geeks-out.log"
     }
   ]
 }
