@@ -78,20 +78,20 @@ A service to manage the users and courses.
 The folder structure of this app is explained below:
 
 | Name | Description |
-| ------------------------  | --------------------------------------------------------------------------------------------- |
-| **.vscode**               | Contains debug files |
-| **node_modules**          | Contains all  npm dependencies |
-| **bin/**                  | Contains files to start and stop the service |
-| **dist/**                 | Contains transpiled code which can run |
-| **src/**                  | Contains source code|
-| **src/config**            | Contains config files|  
-| **src/db**                | Contains db related code|
-| **src/routes**            | Contains code related APIs exposed by this service|                   
-| **src/Server.ts**         | Starting point to this service | 
-| package.json              | Contains npm dependencies as well as |
-| Dockerfile                | File to build the docker image |
-| tsconfig.json             | Config settings for compiling source code only written in TypeScript |
-| tslint.json               | Config settings for TSLint code style checking |
+| ------------------------  | --------------------------------------------------------------------- |
+| **.vscode**               | Contains debug files                                                  |
+| **node_modules**          | Contains all  npm dependencies                                        |
+| **bin/**                  | Contains files to start and stop the service                          |
+| **dist/**                 | Contains transpiled code which can run                                |
+| **src/**                  | Contains source code                                                  |
+| **src/config**            | Contains config files                                                 |  
+| **src/db**                | Contains db related code                                              |
+| **src/routes**            | Contains code related APIs exposed by this service                    |                   
+| **src/Server.ts**         | Starting point to this service                                        | 
+| package.json              | Contains npm dependencies as well as                                  |
+| Dockerfile                | File to build the docker image                                        |
+| tsconfig.json             | Config settings for compiling source code only written in TypeScript  |
+| tslint.json               | Config settings for TSLint code style checking                        |
 
 
 # APIs
