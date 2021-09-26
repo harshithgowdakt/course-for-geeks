@@ -1,6 +1,6 @@
-import { ResponseGenerator } from '../common/response-generator'
-import { Validation } from '../validation/validation.js'
+
 import bcrypt from 'bcrypt';
+import { Validation } from '../validation/validation.js'
 import { saltRounds } from '../common/app-constants'
 import { Request, Response, NextFunction } from 'express';
 
@@ -14,7 +14,7 @@ export class UserController {
                     exclude: ['password', 'createdAt', 'updatedAt']
                 }
             });
-            res.send(ResponseGenerator.generateSuccessResponse(users, 'user.list'));
+            res.json(users);
         } catch (error) {
             next(error)
         }
@@ -25,11 +25,11 @@ export class UserController {
             let user = await userModel.findByPk(req.params.id);
             if (!user) return res.status(400).send('User with given ID does not exists');
 
-            res.send(ResponseGenerator.generateSuccessResponse({
+            res.json({
                 id: user.id,
                 name: user.name,
                 email: user.email
-            }, 'user.details'));
+            });
         } catch (error) {
             next(error);
         }
@@ -47,11 +47,11 @@ export class UserController {
             req.body.password = hashedPassword;
 
             let user = await userModel.create(req.body);
-            res.send(ResponseGenerator.generateSuccessResponse({
+            res.json({
                 id: user.id,
                 name: user.name,
                 email: user.email
-            }, 'registration.success'));
+            });
         } catch (error) {
             next(error);
         }

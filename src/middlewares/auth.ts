@@ -1,4 +1,3 @@
-import { ResponseGenerator } from '../common/response-generator'
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 const ExtractJwt = passportJWT.ExtractJwt;
@@ -27,7 +26,7 @@ export class Auth {
                 return next(err);
             }
             if (!user) {
-                res.status(401).send(ResponseGenerator.generateErrorResponse("Unauthenticated request"));
+                res.status(401).send("Unauthenticated request");
             } else {
                 return next();
             }

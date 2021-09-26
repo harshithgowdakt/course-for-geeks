@@ -1,4 +1,3 @@
-import { ResponseGenerator } from '../common/response-generator'
 import { Validation } from '../validation/validation.js'
 import { Request,Response, NextFunction } from 'express';
 
@@ -8,7 +7,7 @@ export class CourseController {
     static async getAllCourses(req: Request, res: Response, next: NextFunction) {
         try {
             let courses = await courseModel.findAll();
-            res.send(ResponseGenerator.generateSuccessResponse(courses, 'course.list'));
+            res.json(courses);
         } catch (error) {
             next(error);
         }
@@ -19,7 +18,7 @@ export class CourseController {
             let course = await courseModel.findByPk(req.params.id);
             if (!course) return res.status(400).send('Course with given ID does not exists');
 
-            res.send(ResponseGenerator.generateSuccessResponse(course, 'course.details'));
+            res.json(course);
         } catch (error) {
             next(error);
         }
@@ -30,7 +29,7 @@ export class CourseController {
             if (error) return res.status(400).send(error.details[0].message);
 
             let course = await courseModel.create(req.body);
-            res.send(ResponseGenerator.generateSuccessResponse(course, 'course.registration.success'));
+            res.json(course);
         } catch (error) {
             next(error);
         }
@@ -41,7 +40,7 @@ export class CourseController {
             if (!course) return res.status(400).send('Course with given ID does not exists');
 
             course = await courseModel.destroy({ where: { id: req.params.id } })
-            res.send(ResponseGenerator.generateSuccessResponse(course, 'deleted.successfully'));
+            res.json(course);
         } catch (error) {
             next(error);
         }
@@ -56,7 +55,7 @@ export class CourseController {
             if (error) return res.status(400).send(error.details[0].message);
 
             let isUpdate = await courseModel.update({ name: req.body.name }, { where: { id: req.params.id } });
-            res.send(ResponseGenerator.generateSuccessResponse(isUpdate, 'updated.successfully'));
+            res.json(isUpdate);
         } catch (error) {
             next(error);
         }
