@@ -1,4 +1,4 @@
-import { Validation } from '../validation/validation.js'
+import { Validation } from '../validation/validation'
 import { Request,Response, NextFunction } from 'express';
 
 const courseModel = require('../models').Course;

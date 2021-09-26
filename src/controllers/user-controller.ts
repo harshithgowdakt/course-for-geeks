@@ -1,6 +1,6 @@
 
 import bcrypt from 'bcrypt';
-import { Validation } from '../validation/validation.js'
+import { Validation } from '../validation/validation'
 import { saltRounds } from '../common/app-constants'
 import { Request, Response, NextFunction } from 'express';
 
